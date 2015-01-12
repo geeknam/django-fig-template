@@ -16,7 +16,10 @@ Workers:
 
 ## Installation
 ```bash
-pip install docker
+brew install boot2docker
+boot2docker init
+boot2docker start
+boot2docker shellinit
 pip install fig
 ```
 
