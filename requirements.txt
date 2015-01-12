@@ -1,19 +1,16 @@
-Django==1.7
+Django==1.7.2
 
-gunicorn==19.0
+gunicorn==19.1.1
 
 # Database
-psycopg2==2.5.3
-django-hstore==1.3.2
+psycopg2==2.5.4
 
-# Cache and task queues
-celery[redis]==3.1.11
+# Cache
+celery==3.1.17
 
 # Cache, key value store
-django-redis==3.5
+django-redis==3.8.1
 
-# Config
-django-configurations==0.8
 dj-database-url
 dj-email-url
 django-cache-url
