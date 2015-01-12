@@ -1,0 +1,3 @@
+*.pyc
+
+Dockerfiles/nginx/static_assets/*
