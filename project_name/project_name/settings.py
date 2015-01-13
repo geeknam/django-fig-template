@@ -47,9 +47,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'app.urls'
+ROOT_URLCONF = '{{ project_name }}.urls'
 
-WSGI_APPLICATION = 'app.wsgi.application'
+WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 
 
 # Database (Postgres)

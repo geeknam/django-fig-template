@@ -10,8 +10,8 @@ cache:
 broker:
   image: tutum/rabbitmq
   environment:
-    - RABBITMQ_USER=app
-    - RABBITMQ_PASS=app
+    - RABBITMQ_USER={{ project_name }}
+    - RABBITMQ_PASS={{ project_name }}
 
 web:
   build: Dockerfiles/nginx
@@ -23,16 +23,16 @@ web:
 
 app:
   build: .
-  working_dir: /code/app
-  command: gunicorn app.wsgi:application -b 0.0.0.0:8000 -w 4
+  working_dir: /code/{{ project_name }}
+  command: gunicorn {{ project_name }}.wsgi:application -b 0.0.0.0:8000 -w 4
   environment:
     - DJANGO_CONFIGURATION=Local
-    - DJANGO_SETTINGS_MODULE=app.settings
+    - DJANGO_SETTINGS_MODULE={{ project_name }}.settings
     - DATABASE_HOST=db
     - DATABASE_NAME=postgres
     - DATABASE_PASSWORD=postgres
     - STATIC_ROOT=Dockerfiles/nginx/static_assets/static
-    - BROKER_URL=amqp://app:app@broker:5672//
+    - BROKER_URL=amqp://{{ project_name }}:{{ project_name }}@broker:5672//
     - REDIS_CACHE_URL=cache:6379:1
   volumes:
     - .:/code
@@ -43,16 +43,16 @@ app:
 
 worker:
   build: .
-  working_dir: /code/app
-  command: celery -A app worker -l info
+  working_dir: /code/{{ project_name }}
+  command: celery -A {{ project_name }} worker -l info
   environment:
     - DJANGO_CONFIGURATION=Local
-    - DJANGO_SETTINGS_MODULE=app.settings
+    - DJANGO_SETTINGS_MODULE={{ project_name }}.settings
     - DATABASE_HOST=db
     - DATABASE_NAME=postgres
     - DATABASE_PASSWORD=postgres
     - STATIC_ROOT=Dockerfiles/nginx/static_assets/static
-    - BROKER_URL=amqp://app:app@broker:5672//
+    - BROKER_URL=amqp://{{ project_name }}:{{ project_name }}@broker:5672//
     - REDIS_CACHE_URL=cache:6379:1
     - C_FORCE_ROOT=true # Don't do this in prod
   volumes:
