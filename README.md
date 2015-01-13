@@ -16,13 +16,22 @@ Workers:
 - queue worker: `celery`
 
 ## Installation
+##### Setup Docker
 ```bash
 > brew update
 > brew install boot2docker
 > boot2docker init
 > boot2docker up
 > boot2docker shellinit
-> pip install fig
+```
+#### Install other requirements
+```python
+pip install Django
+pip install fig
+```
+##### Cookiecut the project template
+```bash
+django-admin.py startproject --name=fig.yml --name=dev_setup.sh --template=https://github.com/geeknam/django-fig-template/archive/master.zip [project_name] 
 ```
 
 ## Get started
