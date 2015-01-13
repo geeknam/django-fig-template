@@ -2,7 +2,8 @@
 Django project template that quickly builds containerised development environment
 
 ## Overview
-Build Django development environment in Docker containers. Each of these components live in a single container.
+![Django Dev Containers](http://i.imgur.com/VLLz7kj.png "Django Dev Containers")
+image source: [www.tutum.co](https://www.tutum.co/?utm_source=github&utm_campaign=django-fig-template)
 
 Services include:
 - Database: `postgres:latest`
